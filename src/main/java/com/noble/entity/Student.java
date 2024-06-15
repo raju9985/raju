@@ -5,18 +5,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import lombok.NoArgsConstructor;
 
 @Data
 @Table(name="STD")
 @Entity
-public class Student extends CourseDetails{
+@AllArgsConstructor
+@NoArgsConstructor
+public class Student {
 
 	@Id
 	@Column(name="STD_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer sid;
+	private Long sid;
 	
 	@Column(name="SNAME",length = 50)
 	private String sname;
@@ -27,7 +33,25 @@ public class Student extends CourseDetails{
 	@Column(name="QUALIFICATION",length = 15)
 	private String Qualification;
 	
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public Long getSid() {
+		return sid;
+	}
+
+	public void setSid(Long sid) {
+		this.sid = sid;
+	}
+
 	@Column(name = "LOCATION",length = 35 )
 	private String location;
+	
+	
 	
 }
